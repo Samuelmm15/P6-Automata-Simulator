@@ -19,6 +19,14 @@
 #include <algorithm>
 #include <regex>
 
+/// Sobrecarga del operador de entrada para la lectura de los ficheros de entrada.
+std::istream& operator>>(std::istream& input, std::vector<std::string>& vector_chains) {
+    std::string line;
+    while (std::getline(input, line)) {
+        vector_chains.push_back(line);
+    }
+    return input;
+}
 
 int main(int argc, char** argv) {
   if (argc == 3) {
@@ -40,8 +48,12 @@ int main(int argc, char** argv) {
       return 1;
     }
     /// Lectura del fichero .fa de entrada
-
+    std::ifstream automata_file_content(automata_file);
+    std::vector<std::string> automata_file_lines_vector;
+    automata_file_content >> automata_file_lines_vector;
+    automata_file_content.close();
     /// Control de errores de dicho fichero
+    
     /// Creación del objeto automata
     /// Lectura del fichero .txt de entrada
     /// Control de errores de dicho fichero
