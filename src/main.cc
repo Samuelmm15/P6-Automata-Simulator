@@ -51,12 +51,17 @@ int main(int argc, char** argv) {
     std::ifstream automata_file_content(automata_file);
     std::vector<std::string> automata_file_lines_vector;
     automata_file_content >> automata_file_lines_vector;
-    automata_file_content.close();
-    /// Control de errores de dicho fichero
-    
-    /// Creación del objeto automata
+    automata_file_content.close(); /// Cierre de la lectura del fichero .fa de entrada
+    /// Creación del objeto automata 
+    /// Control de errores de dicho fichero dentro de la clase automata
+
     /// Lectura del fichero .txt de entrada
+    std::ifstream chains_file_content(chains_file);
+    std::vector<std::string> chains_file_lines_vector;
+    chains_file_content >> chains_file_lines_vector;
+    chains_file_content.close(); /// Cierre de la lectura del fichero .txt de entrada
     /// Control de errores de dicho fichero
+
     /// Creación del objeto cadena
     /// Comprobación de la cadena
   } else if (argc == 2) {
