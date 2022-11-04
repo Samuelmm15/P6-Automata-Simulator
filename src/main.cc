@@ -17,12 +17,30 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <regex>
 
 
 int main(int argc, char** argv) {
   if (argc == 3) {
-    std::cout << "Accede de manera correcta" << std::endl;
+    /// Comrobación de los formatos de los ficheros de entrada
+    std::string automata_file = argv[1];
+    std::string chains_file = argv[2];
+    std::regex automata__file_regex(".*\\.fa$");
+    if (!std::regex_match(automata_file, automata__file_regex)) {
+      std::cout << "ERROR: El fichero de entrada de especificación del autómata, no tiene el formato de fichero correcto." << std::endl;
+      std::cout << "Para más información haga uso de la opción -h o --help" << std::endl;
+      std::cout << "./p06_automata_simulator (-h | --help)" << std::endl;
+      return 1;
+    }
+    std::regex chains_file_regex(".*\\.txt$");
+    if (!std::regex_match(chains_file, chains_file_regex)) {
+      std::cout << "ERROR: El fichero de entrada de las cadenas a comprobar, no tiene el formato de fichero correcto." << std::endl;
+      std::cout << "Para más información haga uso de la opción -h o --help" << std::endl;
+      std::cout << "./p06_automata_simulator (-h | --help)" << std::endl;
+      return 1;
+    }
     /// Lectura del fichero .fa de entrada
+
     /// Control de errores de dicho fichero
     /// Creación del objeto automata
     /// Lectura del fichero .txt de entrada
