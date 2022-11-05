@@ -11,6 +11,8 @@
  * 
  */
 
+/// TENER EN CUENTA TODAS LAS POSIBLES COMPROBACIONES DE ERRORES CUANDO SE FINALICE CON LA IMPLEMENTACIÓN
+
 #include "../include/Automata.h"
 #include "../include/Alphabet.h"
 #include "../include/State.h"
@@ -43,8 +45,8 @@ Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
       initial_state_ = automata_file_lines_vector[i];
     } else { /// En este punto se produce el establecimiento de los distintos nodos y transiciones
       auxiliary_line = automata_file_lines_vector[i];
-      std::remove(auxiliary_line.begin(), auxiliary_line.end(), ' ');
-      std::cout << "Linea: " << auxiliary_line << std::endl; /// SIRVE PARA LA COMPROBACIÓN
+      auxiliary_line.erase(std::remove(auxiliary_line.begin(), auxiliary_line.end(), ' '), auxiliary_line.end()); 
+      // std::cout << "Linea: " << auxiliary_line << std::endl; /// SIRVE PARA LA COMPROBACIÓN
       State auxiliary_state;
       Transition auxiliary_transition;
       bool introduction_of_state = false;
@@ -75,15 +77,14 @@ Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
             std::string auxiliary_string;
             auxiliary_string.push_back(auxiliary_line[j]);
             auxiliary_transition.setTransitionState(auxiliary_string);
+            auxiliary_state.setTransitions(auxiliary_transition);
             introduction_of_state = false;
             Transition auxiliary_transition_; /// De esta manera se reinicia el objeto
           }
         }
       }
       auxiliary_state.PrintState();
-      // auxiliary_state.~State();
       auxiliary_line.clear();
-      /// Creación del vector de estados que tiene asociadas transiciones
     }
-  }
+  } /// En este punto el autómata está creado de manera correcta
 };
