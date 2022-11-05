@@ -19,6 +19,7 @@
 
 #include "../include/Alphabet.h"
 #include "../include/Chain.h"
+#include "../include/State.h"
 
 #pragma once
 
@@ -27,10 +28,8 @@ class Automata : public Chain {
   public:
     Automata(std::vector<std::string> automata_file_lines_vector);
   private:
-  int number_of_states_;
-    std::vector<std::string> states_;
+    int number_of_states_;
+    std::vector<State> states_;
     Alphabet alphabet_;
-    std::vector<std::string> transitions_;
     std::string initial_state_;
-    std::vector<std::string> final_states_;
 };

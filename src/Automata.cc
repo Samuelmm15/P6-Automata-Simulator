@@ -13,6 +13,8 @@
 
 #include "../include/Automata.h"
 #include "../include/Alphabet.h"
+#include "../include/State.h"
+#include "../include/Transition.h"
 
 Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
   std::string auxiliary_line;
@@ -40,6 +42,31 @@ Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
     } else if (i == 2) {
       initial_state_ = automata_file_lines_vector[i];
     } else { /// En este punto se produce el establecimiento de los distintos nodos y transiciones
+      auxiliary_line = automata_file_lines_vector[i];
+      std::remove(auxiliary_line.begin(), auxiliary_line.end(), ' ');
+      State auxiliary_state;
+      for (int j = 0; j < auxiliary_line.size(); j++) {
+        if (j == 0) {
+          std::string auxiliary_string;
+          auxiliary_string = auxiliary_line[j];
+          auxiliary_state.setState(auxiliary_string);
+          states_.push_back(auxiliary_state);
+        } else if (j == 1) {
+          if (auxiliary_line[j] == '0') {
+            auxiliary_state.setFinalState(false);
+          } else {
+            auxiliary_state.setFinalState(true);
+          }
+        } else {
+          std::string auxiliary_string;
+          auxiliary_string = auxiliary_line[j];
+          Transition auxiliary_transition;
+          auxiliary_transition.setTransition(auxiliary_string);
+          auxiliary_state.setTransitions(auxiliary_transition);
+        }
+      }
+      auxiliary_state.~State();
+      auxiliary_line.clear();
       /// Creación del vector de estados que tiene asociadas transiciones
     }
   }

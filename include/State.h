@@ -17,13 +17,19 @@
 #include <sstream>
 #include <algorithm>
 
+#include "../include/Transition.h"
+
 #pragma once
 
 class State {
   public:
     State();
-    void setState();
+    ~State();
+    void setState(std::string state_number);
+    void setTransitions(Transition transition);
+    void setFinalState(bool final_state);
   private:
     std::string state_;
-    std::vector<std::string> transitions_;
+    std::vector<Transition> transitions_;
+    bool final_state_; /// Para comprobar si se trata de un estado de aceptación o no.
 };

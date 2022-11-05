@@ -125,4 +125,4 @@ std::string Alphabet::ChainComprobation(std::string chain) {
     }
   }
   return chainResult;
-}
+};

@@ -26,7 +26,7 @@ Chain::Chain() {
  */
 Chain::~Chain() {
   chain_.clear();
-}
+};
 
 /**
  * @brief This method adds the different introduced chains by the file into a vector of chains.
