@@ -29,6 +29,8 @@ class State {
     void setTransitions(Transition transition);
     void setFinalState(bool final_state);
     void setNumberTransitions(int number_transitions);
+    std::string getState();
+    bool getFinalState();
     Transition getTransition(int position);
     void PrintState();
   private:

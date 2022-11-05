@@ -39,6 +39,14 @@ void State::setNumberTransitions(int number_transitions) {
   number_of_transitions_ = number_transitions;
 };
 
+std::string State::getState() {
+  return state_;
+};
+
+bool State::getFinalState() {
+  return final_state_;
+};
+
 Transition State::getTransition(int position) {
   return transitions_[position];
 };

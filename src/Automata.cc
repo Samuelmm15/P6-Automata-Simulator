@@ -95,4 +95,19 @@ Alphabet Automata::getAlphabet() {
 };
 
 void Automata::ChainValidation(std::vector<Chain> chains_to_validate) {
+  std::cout << std::endl;
+  for (int i = 0; i < chains_to_validate.size(); i++) {
+    std::string auxiliary_chain = chains_to_validate[i].getChain();
+    if (auxiliary_chain == "&") {
+      for (int j = 0; j < states_.size(); j++) {
+        if (states_[j].getState() == initial_state_) {
+          if (states_[j].getFinalState() == true) {
+            std::cout << auxiliary_chain << " --- Accepted" << std::endl;
+          } else {
+            std::cout << auxiliary_chain << " --- Rejected" << std::endl;
+          }
+        }
+      }
+    }
+  }
 };
