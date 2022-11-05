@@ -35,7 +35,7 @@ Chain::~Chain() {
  * @param alphabet is the alphabet of the introduced chain.
  */
 void Chain::AddChain(std::string newChain, Alphabet alphabet) {
-  if (AlphabetComprobation(newChain) == true) {
+  if (alphabet.AlphabetComprobation(newChain) == true) {
     chain_ = newChain;
     alphabetChain_ = alphabet;
   } else {

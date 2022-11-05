@@ -55,8 +55,7 @@ int main(int argc, char** argv) {
     automata_file_content >> automata_file_lines_vector;
     automata_file_content.close(); /// Cierre de la lectura del fichero .fa de entrada
     /// Creación del objeto automata 
-    Automata new_automata(automata_file_lines_vector);
-    /// Control de errores de dicho fichero dentro de la clase automata
+    Automata new_automata(automata_file_lines_vector); /// Control de errores de dicho fichero dentro de la clase automata
 
     /// Lectura del fichero .txt de entrada
     std::ifstream chains_file_content(chains_file);
@@ -64,6 +63,19 @@ int main(int argc, char** argv) {
     chains_file_content >> chains_file_lines_vector;
     chains_file_content.close(); /// Cierre de la lectura del fichero .txt de entrada
     /// Control de errores de dicho fichero
+    /// Creación del vector de cadenas
+    std::vector<Chain> chains_to_validate;
+    for (int i = 0; i < chains_file_lines_vector.size(); i++) {
+      Chain new_chain;
+      new_chain.AddChain(chains_file_lines_vector[i], new_automata.getAlphabet());
+      chains_to_validate.push_back(new_chain);
+    }
+
+    for (int i = 0; i < chains_to_validate.size(); i++) {
+      std::cout << chains_to_validate[i].getChain() << std::endl;
+    }
+
+    new_automata.ChainValidation(chains_to_validate); /// EN ESTE PUNTO COMIENZA EL OBJETIVO PRINCIPAL DEL PROGRAMA
 
     /// Creación del objeto cadena
     /// Comprobación de la cadena

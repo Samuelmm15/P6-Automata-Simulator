@@ -27,6 +27,8 @@
 class Automata : public Chain {
   public:
     Automata(std::vector<std::string> automata_file_lines_vector);
+    Alphabet getAlphabet();
+    void ChainValidation(std::vector<Chain> chains_to_validate);
   private:
     int number_of_states_;
     std::vector<State> states_;

@@ -11,6 +11,7 @@
  * 
  */
 
+/// TENER EN CUENTA QUE SE DEBE DE TENER EN CUENTA TANTO LOS NFAs COMO LOS DFAs
 /// TENER EN CUENTA TODAS LAS POSIBLES COMPROBACIONES DE ERRORES CUANDO SE FINALICE CON LA IMPLEMENTACIÓN
 
 #include "../include/Automata.h"
@@ -87,4 +88,11 @@ Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
       auxiliary_line.clear();
     }
   } /// En este punto el autómata está creado de manera correcta
+};
+
+Alphabet Automata::getAlphabet() {
+  return alphabet_;
+};
+
+void Automata::ChainValidation(std::vector<Chain> chains_to_validate) {
 };
