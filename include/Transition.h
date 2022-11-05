@@ -10,3 +10,19 @@
  * @copyright Copyright (c) 2022
  * 
  */
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+
+#pragma once
+
+class Transition {
+  public:
+    Transition();
+    void setTransition();
+  private:
+    std::string transition_;
+};

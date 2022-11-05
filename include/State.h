@@ -10,3 +10,20 @@
  * @copyright Copyright (c) 2022
  * 
  */
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+
+#pragma once
+
+class State {
+  public:
+    State();
+    void setState();
+  private:
+    std::string state_;
+    std::vector<std::string> transitions_;
+};

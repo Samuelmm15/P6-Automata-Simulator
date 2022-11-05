@@ -17,14 +17,19 @@
 #include <sstream>
 #include <algorithm>
 
+#include "../include/Alphabet.h"
+#include "../include/Chain.h"
+
 #pragma once
 
-class Automata {
+/// Comprobar si la herencia es la correcta la de este tipo
+class Automata : public Chain {
   public:
     Automata(std::vector<std::string> automata_file_lines_vector);
   private:
+  int number_of_states_;
     std::vector<std::string> states_;
-    std::vector<std::string> alphabet_;
+    Alphabet alphabet_;
     std::vector<std::string> transitions_;
     std::string initial_state_;
     std::vector<std::string> final_states_;

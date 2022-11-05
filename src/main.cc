@@ -19,6 +19,8 @@
 #include <algorithm>
 #include <regex>
 
+#include "../include/Automata.h"
+
 /// Sobrecarga del operador de entrada para la lectura de los ficheros de entrada.
 std::istream& operator>>(std::istream& input, std::vector<std::string>& vector_chains) {
     std::string line;
@@ -53,6 +55,7 @@ int main(int argc, char** argv) {
     automata_file_content >> automata_file_lines_vector;
     automata_file_content.close(); /// Cierre de la lectura del fichero .fa de entrada
     /// Creación del objeto automata 
+    Automata new_automata(automata_file_lines_vector);
     /// Control de errores de dicho fichero dentro de la clase automata
 
     /// Lectura del fichero .txt de entrada
