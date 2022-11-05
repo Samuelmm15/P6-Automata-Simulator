@@ -17,6 +17,14 @@ Transition::Transition() {
   transition_ = "";
 };
 
-void Transition::setTransition(std::string transition) {
+void Transition::setTransitionSymbol(std::string transition_symbol) {
+  transition_symbol_ = transition_symbol;
+};
+
+void Transition::setTransitionState(std::string transition) {
     transition_ = transition;
+};
+
+std::string Transition::at() {
+    return transition_;
 };

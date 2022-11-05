@@ -22,7 +22,10 @@
 class Transition {
   public:
     Transition();
-    void setTransition(std::string transition);
+    void setTransitionSymbol(std::string transition_symbol);
+    void setTransitionState(std::string transition);
+    std::string at();
   private:
+    std::string transition_symbol_;
     std::string transition_;
 };

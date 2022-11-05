@@ -28,8 +28,12 @@ class State {
     void setState(std::string state_number);
     void setTransitions(Transition transition);
     void setFinalState(bool final_state);
+    void setNumberTransitions(int number_transitions);
+    Transition getTransition(int position);
+    void PrintState();
   private:
     std::string state_;
+    int number_of_transitions_;
     std::vector<Transition> transitions_;
     bool final_state_; /// Para comprobar si se trata de un estado de aceptación o no.
 };
