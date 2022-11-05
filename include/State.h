@@ -31,7 +31,7 @@ class State {
     void setNumberTransitions(int number_transitions);
     std::string getState();
     bool getFinalState();
-    Transition getTransition(int position);
+    std::vector<Transition> getTransition();
     void PrintState();
   private:
     std::string state_;

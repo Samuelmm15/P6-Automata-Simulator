@@ -23,7 +23,9 @@ class Transition {
   public:
     Transition();
     void setTransitionSymbol(std::string transition_symbol);
+    std::string getTransitionSymbol();
     void setTransitionState(std::string transition);
+    std::string getTransitionState();
     std::string at();
   private:
     std::string transition_symbol_;

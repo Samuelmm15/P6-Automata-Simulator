@@ -47,15 +47,16 @@ bool State::getFinalState() {
   return final_state_;
 };
 
-Transition State::getTransition(int position) {
-  return transitions_[position];
+std::vector<Transition> State::getTransition() {
+  return transitions_;
 };
 
 void State::PrintState() {
     std::cout << "State: " << state_ << std::endl;
     std::cout << "Number of transitions: " << number_of_transitions_ << std::endl;
     std::cout << "Transitions: " << std::endl;
-    for (int i = 0; i < transitions_.size(); i++) {
-        std::cout << getTransition(i).at() << std::endl;
+    std::vector<Transition> transitions = getTransition();
+    for (int i = 0; i < getTransition().size(); i++) {
+        std::cout << transitions[i].at() << std::endl;
     }
 };
