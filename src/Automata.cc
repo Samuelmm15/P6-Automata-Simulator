@@ -117,6 +117,7 @@ void Automata::ChainValidation(std::vector<Chain> chains_to_validate) {
     } else {
       std::string auxiliary_state = initial_state_;
       bool chain_accepted = false;
+      std::cout << auxiliary_chain.size() << std::endl;
       for (int j = 0; j < auxiliary_chain.size(); j++) {
         std::string auxiliary_string;
         auxiliary_string.push_back(auxiliary_chain[j]);
@@ -124,10 +125,28 @@ void Automata::ChainValidation(std::vector<Chain> chains_to_validate) {
           if (states_[k].getState() == auxiliary_state) {
             std::cout << "Estado actual: " << states_[k].getState() << std::endl;
             std::cout << "Símbolo actual: " << auxiliary_string << std::endl;
+            // if (j == auxiliary_chain.size() - 1) {
+            //   if (states_[k].getFinalState() == true) {
+            //     chain_accepted = true;
+            //   }
+            // }
+            // bool transition_found = false;
             for (int l = 0; l < states_[k].getTransition().size(); l++) {
-              // std::cout << "Transición: " << states_[k].getTransition()[l].getTransitionSymbol() << " -> " << states_[k].getTransition()[l].getTransitionState() << std::endl;
+              std::cout << "Transición: " << states_[k].getTransition()[l].getTransitionSymbol() << " -> " << states_[k].getTransition()[l].getTransitionState() << std::endl;
               if (states_[k].getTransition()[l].getTransitionSymbol() == auxiliary_string) {
                 auxiliary_state = states_[k].getTransition()[l].getTransitionState();
+                // transition_found = true;
+                std::cout << "Estado siguiente: " << auxiliary_state << std::endl;
+                if (j == auxiliary_chain.size() - 1) {
+                  for (int m = 0; m < states_.size(); m++) {
+                    if (states_[m].getState() == auxiliary_state) {
+                      if (states_[m].getFinalState() == true) {
+                        chain_accepted = true;
+                      }
+                    }
+                  }
+                }
+              } else {
                 if (j == auxiliary_chain.size() - 1) {
                   for (int m = 0; m < states_.size(); m++) {
                     if (states_[m].getState() == auxiliary_state) {
@@ -141,6 +160,15 @@ void Automata::ChainValidation(std::vector<Chain> chains_to_validate) {
             }
           }
         }
+        // if (j == auxiliary_chain.size() - 1) {
+        //   for (int m = 0; m < states_.size(); m++) {
+        //     if (states_[m].getState() == auxiliary_state) {
+        //       if (states_[m].getFinalState() == true) {
+        //         chain_accepted = true;
+        //       }
+        //     }
+        //   }
+        // }
         auxiliary_string.clear();
       }
       if (chain_accepted == true) {
