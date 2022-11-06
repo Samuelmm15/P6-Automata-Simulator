@@ -1,5 +1,5 @@
 CC=g++
-CXXFLAGS=-g -std=c++14 -Wall
+CXXFLAGS=-g -std=c++14
 
 OBJS = src/main.o src/Automata.o src/Alphabet.o src/Chain.o src/State.o src/Transition.o
 

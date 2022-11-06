@@ -48,6 +48,13 @@
         "typeinfo": "cpp",
         "bitset": "cpp",
         "ctime": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "chrono": "cpp",
+        "condition_variable": "cpp",
+        "cstring": "cpp",
+        "map": "cpp",
+        "optional": "cpp",
+        "ratio": "cpp",
+        "shared_mutex": "cpp"
     }
 }

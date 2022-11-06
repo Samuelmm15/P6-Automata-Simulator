@@ -102,42 +102,84 @@ Alphabet Automata::getAlphabet() {
 
 void Automata::ChainValidation(std::vector<Chain> chains_to_validate) {
   std::cout << std::endl;
-  std::cout << "Comprobación de cadenas: " << std::endl;
   for (int i = 0; i < chains_to_validate.size(); i++) {
-    std::cout << "Cadena " << i + 1 << ": " << chains_to_validate[i].getChain() << std::endl;
-    std::cout << "Resultado: ";
     std::string chain_to_validate = chains_to_validate[i].getChain();
     std::string current_state = initial_state_;
-    std::string next_state;
-    bool chain_accepted = false;
+    bool chain_accepted = true;
     for (int j = 0; j < chain_to_validate.size(); j++) {
       std::string chain_symbol;
       chain_symbol.push_back(chain_to_validate[j]);
+      bool symbol_accepted = false;
       for (int k = 0; k < states_.size(); k++) {
         if (states_[k].getState() == current_state) {
           for (int l = 0; l < states_[k].getTransition().size(); l++) {
             if (states_[k].getTransition()[l].getTransitionSymbol() == chain_symbol) {
-              next_state = states_[k].getTransition()[l].getTransitionState();
-              current_state = next_state;
+              current_state = states_[k].getTransition()[l].getTransitionState();
+              std::cout << "Estado actual: " << current_state << std::endl;
+              symbol_accepted = true;
             }
           }
         }
       }
-    }
-    for (int j = 0; j < states_.size(); j++) {
-      if (states_[j].getState() == current_state) {
-        if (states_[j].getFinalState() == true) {
-          chain_accepted = true;
-          break;
-        }
+      if (symbol_accepted == false) {
+        std::cout << "Cadena no aceptada" << std::endl;
+        chain_accepted = false;
       }
     }
     if (chain_accepted == true) {
-      std::cout << "Cadena aceptada" << std::endl;
+      for (int j = 0; j < states_.size(); j++) {
+        if (states_[j].getState() == current_state) {
+          std::cout << states_[j].getState() << std::endl;
+          std::cout << states_[j].getFinalState() << std::endl;
+          if (states_[j].getFinalState() == true) {
+            std::cout << "Cadena aceptada: " << chain_to_validate << std::endl;
+          } else {
+            std::cout << "Cadena rechazada: " << chain_to_validate << std::endl;
+          }
+        }
+      }
     } else {
-      std::cout << "Cadena rechazada" << std::endl;
+      std::cout << "Cadena rechazada: " << chain_to_validate << std::endl;
     }
   }
+
+  // std::cout << std::endl;
+  // std::cout << "Comprobación de cadenas: " << std::endl;
+  // for (int i = 0; i < chains_to_validate.size(); i++) {
+  //   std::cout << "Cadena " << i + 1 << ": " << chains_to_validate[i].getChain() << std::endl;
+  //   std::cout << "Resultado: ";
+  //   std::string chain_to_validate = chains_to_validate[i].getChain();
+  //   std::string current_state = initial_state_;
+  //   std::string next_state;
+  //   bool chain_accepted = false;
+  //   for (int j = 0; j < chain_to_validate.size(); j++) {
+  //     std::string chain_symbol;
+  //     chain_symbol.push_back(chain_to_validate[j]);
+  //     for (int k = 0; k < states_.size(); k++) {
+  //       if (states_[k].getState() == current_state) {
+  //         for (int l = 0; l < states_[k].getTransition().size(); l++) {
+  //           if (states_[k].getTransition()[l].getTransitionSymbol() == chain_symbol) {
+  //             next_state = states_[k].getTransition()[l].getTransitionState();
+  //             current_state = next_state;
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   for (int j = 0; j < states_.size(); j++) {
+  //     if (states_[j].getState() == current_state) {
+  //       if (states_[j].getFinalState() == true) {
+  //         chain_accepted = true;
+  //         break;
+  //       }
+  //     }
+  //   }
+  //   if (chain_accepted == true) {
+  //     std::cout << "Cadena aceptada" << std::endl;
+  //   } else {
+  //     std::cout << "Cadena rechazada" << std::endl;
+  //   }
+  // }
 
   // std::cout << std::endl;
   // for (int i = 0; i < chains_to_validate.size(); i++) {
