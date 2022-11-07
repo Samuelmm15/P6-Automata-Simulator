@@ -74,8 +74,22 @@ int main(int argc, char** argv) {
     for (int i = 0; i < chains_to_validate.size(); i++) {
       std::cout << chains_to_validate[i].getChain() << std::endl;
     }
+  
+    // for (int i = 0; i < chains_to_validate.size(); i++) {
+    //   if (new_automata.ChainsValidation(chains_to_validate[i].getChain())) {
+    //     std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
+    //   } else {
+    //     std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
+    //   }
+    // }
 
-    new_automata.ChainValidation(chains_to_validate); /// EN ESTE PUNTO COMIENZA EL OBJETIVO PRINCIPAL DEL PROGRAMA
+    for (int i = 0; i < chains_to_validate.size(); i++) {
+      if (new_automata.DFAChainValidation(chains_to_validate[i].getChain())) {
+        std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
+      } else {
+        std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
+      }
+    }
 
     /// Creación del objeto cadena
     /// Comprobación de la cadena
