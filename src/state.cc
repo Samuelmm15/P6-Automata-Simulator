@@ -11,8 +11,8 @@
  * 
  */
 
-#include "../include/State.h"
-#include "../include/Transition.h"
+#include "../include/state.h"
+#include "../include/transition.h"
 
 State::State() {
   state_ = "";

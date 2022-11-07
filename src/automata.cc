@@ -14,10 +14,10 @@
 /// TENER EN CUENTA QUE SE DEBE DE TENER EN CUENTA TANTO LOS NFAs COMO LOS DFAs
 /// TENER EN CUENTA TODAS LAS POSIBLES COMPROBACIONES DE ERRORES CUANDO SE FINALICE CON LA IMPLEMENTACIÓN
 
-#include "../include/Automata.h"
-#include "../include/Alphabet.h"
-#include "../include/State.h"
-#include "../include/Transition.h"
+#include "../include/automata.h"
+#include "../include/alphabet.h"
+#include "../include/state.h"
+#include "../include/transition.h"
 
 Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
   std::string auxiliary_line;

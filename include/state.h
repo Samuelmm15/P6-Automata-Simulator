@@ -17,7 +17,7 @@
 #include <sstream>
 #include <algorithm>
 
-#include "../include/Transition.h"
+#include "../include/transition.h"
 
 #pragma once
 

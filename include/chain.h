@@ -12,7 +12,7 @@
  */
 
 #include <iostream>
-#include "Alphabet.h"
+#include "alphabet.h"
 
 #pragma once
 

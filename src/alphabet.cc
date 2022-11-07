@@ -11,7 +11,7 @@
  * 
  */
 
-#include "../include/Alphabet.h"
+#include "../include/alphabet.h"
 
 /**
  * @brief This is the constructor of the different Alphabet objects.

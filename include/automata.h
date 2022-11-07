@@ -17,9 +17,9 @@
 #include <sstream>
 #include <algorithm>
 
-#include "../include/Alphabet.h"
-#include "../include/Chain.h"
-#include "../include/State.h"
+#include "../include/alphabet.h"
+#include "../include/chain.h"
+#include "../include/state.h"
 
 #pragma once
 

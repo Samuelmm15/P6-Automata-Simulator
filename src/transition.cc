@@ -11,7 +11,7 @@
  * 
  */
 
-#include "../include/Transition.h"
+#include "../include/transition.h"
 
 Transition::Transition() {
   transition_ = "";

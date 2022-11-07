@@ -11,7 +11,7 @@
  * 
  */
 
-#include "../include/Chain.h"
+#include "../include/chain.h"
 
 /**
  * @brief This is the constructor of the chains objects.

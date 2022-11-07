@@ -19,7 +19,7 @@
 #include <algorithm>
 #include <regex>
 
-#include "../include/Automata.h"
+#include "../include/automata.h"
 
 /// Sobrecarga del operador de entrada para la lectura de los ficheros de entrada.
 std::istream& operator>>(std::istream& input, std::vector<std::string>& vector_chains) {
