@@ -28,9 +28,10 @@ class Automata : public Chain {
   public:
     Automata(std::vector<std::string> automata_file_lines_vector);
     Alphabet getAlphabet();
+    // bool ChainsValidation(std::string chain);
+    // bool analizarEntrada(std::string chain);;
+    // bool DFAChainValidation(std::string chain);
     bool ChainsValidation(std::string chain);
-    bool analizarEntrada(std::string chain);;
-    bool DFAChainValidation(std::string chain);
 
   private:
     int number_of_states_;

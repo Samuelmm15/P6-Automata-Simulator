@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
     // }
 
     for (int i = 0; i < chains_to_validate.size(); i++) {
-      if (new_automata.DFAChainValidation(chains_to_validate[i].getChain())) {
+      if (new_automata.ChainsValidation(chains_to_validate[i].getChain()) == true) {
         std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
       } else {
         std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
