@@ -151,6 +151,7 @@ bool Automata::DFAChainsValidation(std::string chain) {
 
 bool Automata::NFAChainsValidation(std::string chain) {
   std::vector<std::string> states_stack;
+  std::vector<std::string> states_stack_auxiliary;
   std::string current_state = initial_state_;
   states_stack.push_back(current_state);
   std::string next_state;
@@ -158,21 +159,24 @@ bool Automata::NFAChainsValidation(std::string chain) {
   for (int i = 0; i < chain.size(); i++) {
     std::string auxiliary_symbol;
     auxiliary_symbol.push_back(chain[i]);
-    int number_of_states = states_stack.size();
-    for (int j = 0; j < number_of_states; j++) {
+    for (int j = 0; j < states_stack.size(); j++) {
       for (int k = 0; k < states_.size(); k++) {
         if (states_[k].getState() == states_stack[j]) {
           for (int l = 0; l < states_[k].getTransition().size(); l++) {
             if (states_[k].getTransition()[l].getTransitionSymbol() == auxiliary_symbol) {
               next_state = states_[k].getTransition()[l].getTransitionState();
-              states_stack.push_back(next_state);
-              states_stack.erase(states_stack.begin() + j);
+              states_stack_auxiliary.push_back(next_state);
+              // std::cout << next_state << std::endl;
             }
           }
         }
       }
     }
+    states_stack.clear();
+    states_stack = states_stack_auxiliary;
+    states_stack_auxiliary.clear();
   }
+
   for (int i = 0; i < states_stack.size(); i++) {
     for (int j = 0; j < states_.size(); j++) {
       if (states_[j].getState() == states_stack[i]) {
