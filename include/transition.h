@@ -1,7 +1,7 @@
 /**
- * @file Transition.h
+ * @file transition.h
  * @author Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief 
+ * @brief This file contains the transition class.
  * @version 0.1
  * @date 2022-11-05
  * @signature Computabilidad y Algoritmia.
@@ -19,6 +19,10 @@
 
 #pragma once
 
+/**
+ * @brief This class contains the different transitions of the automata.
+ * 
+ */
 class Transition {
   public:
     Transition();

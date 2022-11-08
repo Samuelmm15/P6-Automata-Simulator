@@ -1,7 +1,7 @@
 /**
- * @file State.h
+ * @file state.h
  * @author Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief 
+ * @brief this file contains the state class.
  * @version 0.1
  * @date 2022-11-05
  * @signature Computabilidad y Algoritmia.
@@ -21,6 +21,10 @@
 
 #pragma once
 
+/**
+ * @brief This class contains the different states of the automata.
+ * 
+ */
 class State {
   public:
     State();
@@ -37,5 +41,5 @@ class State {
     std::string state_;
     int number_of_transitions_;
     std::vector<Transition> transitions_;
-    bool final_state_; /// Para comprobar si se trata de un estado de aceptación o no.
+    bool final_state_; /// To comprobe that the state is final or not.
 };

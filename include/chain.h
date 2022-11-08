@@ -1,7 +1,7 @@
 /**
- * @file Chain.h
+ * @file chain.h
  * @author Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief 
+ * @brief this file contains the chain class.
  * @version 0.1
  * @date 2022-11-05
  * @signature Computabilidad y Algoritmia.

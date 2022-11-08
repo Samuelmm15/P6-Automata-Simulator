@@ -1,7 +1,7 @@
 /**
- * @file Alphabet.cc
+ * @file alphabet.cc
  * @author Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief 
+ * @brief This file contains the implementation of the differents methods of the alphabet class.
  * @version 0.1
  * @date 2022-11-05
  * @signature Computabilidad y Algoritmia.
@@ -27,7 +27,7 @@ Alphabet::Alphabet() {
  */
 void Alphabet::setSymbolsToAlphabet(std::vector<std::string> dividedAlphabet) {
   for (int i = 0; i < dividedAlphabet.size(); i++) {
-    if (dividedAlphabet[i].size() == 1) { /// Tener en cuenta que los simbolos del alfabeto no pueden ser de mas de un caracter.
+    if (dividedAlphabet[i].size() == 1) {
       alphabet_.push_back(dividedAlphabet[i]);
     }
   }

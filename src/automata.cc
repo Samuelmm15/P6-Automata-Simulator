@@ -1,7 +1,7 @@
 /**
- * @file Automata.cc
+ * @file automata.cc
  * @author Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief 
+ * @brief This file contains the automata class.
  * @version 0.1
  * @date 2022-11-04
  * @signature Computabilidad y Algoritmia.
@@ -11,14 +11,16 @@
  * 
  */
 
-/// TENER EN CUENTA QUE SE DEBE DE TENER EN CUENTA TANTO LOS NFAs COMO LOS DFAs
-/// TENER EN CUENTA TODAS LAS POSIBLES COMPROBACIONES DE ERRORES CUANDO SE FINALICE CON LA IMPLEMENTACIÓN
-
 #include "../include/automata.h"
 #include "../include/alphabet.h"
 #include "../include/state.h"
 #include "../include/transition.h"
 
+/**
+ * @brief This is the constructor of the different automatas objects.
+ * 
+ * @param automata_file_lines_vector This is the vector that contains the lines of the automata specifications.
+ */
 Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
   std::string auxiliary_line;
   for (int i = 0; i < automata_file_lines_vector.size(); i++) {
@@ -39,15 +41,14 @@ Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
         std::cout << "Alfabeto del autómata introducido: ";
         auxiliary_alphabet.PrintAlphabet();
         std::cout << std::endl;
-        alphabet_ = auxiliary_alphabet; /// Establecimiento del alfabeto del autómata.
+        alphabet_ = auxiliary_alphabet; /// This is the alphabet of the automata.
     } else if (i == 1) {
-      number_of_states_ = std::stoi(automata_file_lines_vector[i]); /// Necesario para convertir a entero
+      number_of_states_ = std::stoi(automata_file_lines_vector[i]); /// Neccesary to convert into int.
     } else if (i == 2) {
       initial_state_ = automata_file_lines_vector[i];
-    } else { /// En este punto se produce el establecimiento de los distintos nodos y transiciones
+    } else { /// This is the part of the automata where the states are created.
       auxiliary_line = automata_file_lines_vector[i];
       auxiliary_line.erase(std::remove(auxiliary_line.begin(), auxiliary_line.end(), ' '), auxiliary_line.end()); 
-      // std::cout << "Linea: " << auxiliary_line << std::endl; /// SIRVE PARA LA COMPROBACIÓN
       State auxiliary_state;
       Transition auxiliary_transition;
       bool introduction_of_state = false;
@@ -79,27 +80,32 @@ Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
             auxiliary_transition.setTransitionState(auxiliary_string);
             auxiliary_state.setTransitions(auxiliary_transition);
             introduction_of_state = false;
-            Transition auxiliary_transition_; /// De esta manera se reinicia el objeto
+            Transition auxiliary_transition_; /// To reload the objects
           }
         }
       }
       auxiliary_line.clear();
       states_.push_back(auxiliary_state);
     }
-  } /// En este punto el autómata está creado de manera correcta
-  // states_[0].PrintState();
-  // std::cout << std::endl;
-  // states_[1].PrintState();
-  // std::cout << std::endl;
-  // states_[2].PrintState();
-  // std::cout << std::endl;
-  // states_[3].PrintState();
+  }
 };
 
+/**
+ * @brief This method returns the alphabet of the automata.
+ * 
+ * @return Alphabet 
+ */
 Alphabet Automata::getAlphabet() {
   return alphabet_;
 };
 
+/**
+ * @brief This method validates the chains of the automata.
+ * 
+ * @param chain The chain that is going to be validated.
+ * @return true If the chain is valid.
+ * @return false If the chain is not valid.
+ */
 bool Automata::ChainsValidation(std::string chain) {
   std::string current_state = initial_state_;
   std::string next_state;

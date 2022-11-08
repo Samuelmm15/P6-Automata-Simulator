@@ -1,7 +1,7 @@
 /**
- * @file Automata.h
+ * @file automata.h
  * @author Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief 
+ * @brief This file contains the automata class.
  * @version 0.1
  * @date 2022-11-04
  * @signature Computabilidad y Algoritmia.
@@ -23,14 +23,10 @@
 
 #pragma once
 
-/// Comprobar si la herencia es la correcta la de este tipo
 class Automata : public Chain {
   public:
     Automata(std::vector<std::string> automata_file_lines_vector);
     Alphabet getAlphabet();
-    // bool ChainsValidation(std::string chain);
-    // bool analizarEntrada(std::string chain);;
-    // bool DFAChainValidation(std::string chain);
     bool ChainsValidation(std::string chain);
 
   private:

@@ -1,7 +1,7 @@
 /**
- * @file Chain.cc
+ * @file chain.cc
  * @author Samuel Martín Morales (alu0101359526@ull.edu.es)
- * @brief 
+ * @brief this file contains the chain methods implementation.
  * @version 0.1
  * @date 2022-11-05
  * @signature Computabilidad y Algoritmia.
