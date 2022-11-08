@@ -17,6 +17,7 @@
 #include <sstream>
 #include <algorithm>
 #include <stdlib.h>
+#include <stack>
 
 #include "../include/alphabet.h"
 #include "../include/chain.h"
@@ -28,7 +29,8 @@ class Automata : public Chain {
   public:
     Automata(std::vector<std::string> automata_file_lines_vector);
     Alphabet getAlphabet();
-    bool ChainsValidation(std::string chain);
+    bool DFAChainsValidation(std::string chain);
+    bool NFAChainsValidation(std::string chain);
 
   private:
     int number_of_states_;

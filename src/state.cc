@@ -102,9 +102,9 @@ std::vector<Transition> State::getTransition() {
 void State::PrintState() {
     std::cout << "State: " << state_ << std::endl;
     std::cout << "Number of transitions: " << number_of_transitions_ << std::endl;
-    // std::cout << "Transitions: " << std::endl;
-    // std::vector<Transition> transitions = getTransition();
-    // for (int i = 0; i < getTransition().size(); i++) {
-    //     std::cout << transitions[i].at() << std::endl;
-    // }
+    std::cout << "Transitions: " << std::endl;
+    std::vector<Transition> transitions = getTransition();
+    for (int i = 0; i < getTransition().size(); i++) {
+        std::cout << transitions[i].at() << std::endl;
+    }
 };
