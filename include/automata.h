@@ -16,6 +16,7 @@
 #include <vector>
 #include <sstream>
 #include <algorithm>
+#include <stdlib.h>
 
 #include "../include/alphabet.h"
 #include "../include/chain.h"

@@ -45,7 +45,12 @@ Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
     } else if (i == 1) {
       number_of_states_ = std::stoi(automata_file_lines_vector[i]); /// Neccesary to convert into int.
     } else if (i == 2) {
-      initial_state_ = automata_file_lines_vector[i];
+      if (automata_file_lines_vector[i].size() == 1) {
+        initial_state_ = automata_file_lines_vector[i];
+      } else {
+        std::cout << "ERROR >>> El autómata no puede tener más de un estado inicial" << std::endl;
+        exit(1); /// Exit with error 1.
+      }
     } else { /// This is the part of the automata where the states are created.
       auxiliary_line = automata_file_lines_vector[i];
       auxiliary_line.erase(std::remove(auxiliary_line.begin(), auxiliary_line.end(), ' '), auxiliary_line.end()); 
@@ -66,12 +71,24 @@ Automata::Automata(std::vector<std::string> automata_file_lines_vector) {
         } else if (j == 2) {
           std::string auxiliary_string;
           auxiliary_string.push_back(auxiliary_line[j]);
-          int auxiliary_number_of_transitions = std::stoi(auxiliary_string);
-          auxiliary_state.setNumberTransitions(auxiliary_number_of_transitions);
+          if (auxiliary_string == "0") {
+            std::cout << std::endl;
+            std::cout << "El estado " << auxiliary_state.getState() << " no tiene transiciones" << std::endl;
+            auxiliary_state.PrintState();
+          } else {
+            int auxiliary_number_of_transitions = std::stoi(auxiliary_string);
+            auxiliary_state.setNumberTransitions(auxiliary_number_of_transitions);
+          }
         } else {
           if (introduction_of_state == false) {
             std::string auxiliary_string;
             auxiliary_string.push_back(auxiliary_line[j]);
+            if (alphabet_.AlphabetComprobation(auxiliary_string) == false) {
+              std::cout << "ERROR >>> El símbolo " << auxiliary_string << " no pertenece al alfabeto del autómata" << std::endl;
+              std::cout << "El estado en el que se produce esto es:" << std::endl;
+              auxiliary_state.PrintState();
+              exit(1); /// Exit with error 1.
+            }
             auxiliary_transition.setTransitionSymbol(auxiliary_string);
             introduction_of_state = true;
           } else {
