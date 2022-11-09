@@ -4,5 +4,5 @@ ab
 bc
 aaaababbc
 bcbcbcbcab
-b
 ac
+b
