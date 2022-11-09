@@ -83,22 +83,32 @@ int main(int argc, char** argv) {
       chains_to_validate.push_back(new_chain);
     }
 
-    // std::cout << std::endl;
-    // for (int i = 0; i < chains_to_validate.size(); i++) {
-    //   if (new_automata.DFAChainsValidation(chains_to_validate[i].getChain()) == true) {
-    //     std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
-    //   } else {
-    //     std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
-    //   }
-    // }
-
     std::cout << std::endl;
-    for (int i = 0; i < chains_to_validate.size(); i++) {
-      if (new_automata.NFAChainsValidation(chains_to_validate[i].getChain()) == true) {
-        std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
-      } else {
-        std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
+    std::cout << "El autómata introducido se trata de un NFA o un DFA? (N[FA]/D[FA]): ";
+    char automata_type;
+    std::cin >> automata_type;
+
+    if (automata_type == 'D') {
+      std::cout << std::endl;
+      for (int i = 0; i < chains_to_validate.size(); i++) {
+        if (new_automata.DFAChainsValidation(chains_to_validate[i].getChain()) == true) {
+          std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
+        } else {
+          std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
+        }
       }
+    } else if (automata_type == 'N') {
+      std::cout << std::endl;
+      for (int i = 0; i < chains_to_validate.size(); i++) {
+        if (new_automata.NFAChainsValidation(chains_to_validate[i].getChain()) == true) {
+          std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
+        } else {
+          std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
+        }
+      }
+    } else {
+      std::cout << "ERROR: La opción escogida no es correcta." << std::endl;
+      std::cout << "Introduzca las opciones con letras mayúsculas (N/D)" << std::endl;
     }
 
   } else if (argc == 2) {
