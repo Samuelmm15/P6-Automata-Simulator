@@ -83,23 +83,23 @@ int main(int argc, char** argv) {
       chains_to_validate.push_back(new_chain);
     }
 
-    // std::cout << std::endl;
-    // for (int i = 0; i < chains_to_validate.size(); i++) {
-    //   if (new_automata.DFAChainsValidation(chains_to_validate[i].getChain()) == true) {
-    //     std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
-    //   } else {
-    //     std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
-    //   }
-    // }
-
     std::cout << std::endl;
     for (int i = 0; i < chains_to_validate.size(); i++) {
-      if (new_automata.NFAChainsValidation(chains_to_validate[i].getChain()) == true) {
+      if (new_automata.DFAChainsValidation(chains_to_validate[i].getChain()) == true) {
         std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
       } else {
         std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
       }
     }
+
+    // std::cout << std::endl;
+    // for (int i = 0; i < chains_to_validate.size(); i++) {
+    //   if (new_automata.NFAChainsValidation(chains_to_validate[i].getChain()) == true) {
+    //     std::cout << i << ". " << chains_to_validate[i].getChain() << " --- aceptada." << std::endl;
+    //   } else {
+    //     std::cout << i << ". " << chains_to_validate[i].getChain() << " --- rechazada." << std::endl;
+    //   }
+    // }
 
   } else if (argc == 2) {
     std::string option = argv[1];
