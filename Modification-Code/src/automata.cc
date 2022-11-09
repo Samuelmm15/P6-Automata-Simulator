@@ -162,11 +162,13 @@ bool Automata::NFAChainsValidation(std::string chain) {
     for (int j = 0; j < states_stack.size(); j++) {
       for (int k = 0; k < states_.size(); k++) {
         if (states_[k].getState() == states_stack[j]) {
+          if (auxiliary_symbol == "&" && states_[k].getFinalState() == true) {
+            return chain_accepted = true;
+          } 
           for (int l = 0; l < states_[k].getTransition().size(); l++) {
             if (states_[k].getTransition()[l].getTransitionSymbol() == auxiliary_symbol) {
               next_state = states_[k].getTransition()[l].getTransitionState();
               states_stack_auxiliary.push_back(next_state);
-              // std::cout << next_state << std::endl;
             }
           }
         }
